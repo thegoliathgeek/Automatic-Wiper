@@ -13,11 +13,16 @@ config={
 }
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(7,GPIO.OUT)
+GPIO.setup(5,GPIO.IN)
 firebase = pyrebase.initialize_app(config)
 db=firebase.database()
 while True:
 	time=str(datetime.datetime.now().time())
 	colonCount=0
+	if GPIO.input(5):
+		print("LOW Beam")
+	else:
+		print("HIGH Beam")
 	for i in range(len(time)):
 		if colonCount>0:
 			real=(time[i:i+2])
@@ -32,24 +37,4 @@ while True:
 			break
 		elif time[i]==':':
 			colonCount=colonCount+1
-	tt.sleep(60)
-
-firebase = pyrebase.initialize_app(config)
-db=firebase.database()
-while True:
-    time=str(datetime.datetime.now().time())
-    colonCount=0
-    for i in range(len(time)):
-            if colonCount>0:
-                real=(time[i:i+2])
-                print(real)
-                db.child("Car 1  ").child('Time').set(str(real))
-                if int(real) %2==0:
-                    db.child("Car 1  ").child('Light').set('ON')
-                else:
-                    db.child("Car 1  ").child('Light').set('OFF')
-                break
-            elif time[i]==':':
-                colonCount=colonCount+1
-    tt.sleep(60)
-
+	tt.sleep(1)
