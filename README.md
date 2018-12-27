@@ -1,4 +1,7 @@
 #Automatic Wiper
+
 Requirements 
-    Pyrebase
-    RPi.GPIO
+    
+    - Pyrebase
+    
+    -RPi.GPIO
