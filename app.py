@@ -22,21 +22,21 @@ while True:
 	time=str(datetime.datetime.now().time())
 	colonCount=0
 	if GPIO.input(InputPin):
-		db.child("Car 1 ").child("Light State").set("High Beam")
+		db.child("Car 1").child("Light State").set("High Beam")
 		print("LOW Beam")
 	else:
 		print("HIGH Beam")
-		db.child("Car 1 ").child("Light State").set("Low Beam")
+		db.child("Car 1").child("Light State").set("Low Beam")
 	for i in range(len(time)):
 		if colonCount>0:
 			real=(time[i:i+2])
 			print(real)
-			db.child("Car 1  ").child('Time').set(str(real))
+			db.child("Car 1").child('Time').set(str(real))
 			if int(real) %2==0:
-				db.child("Car 1 ").child('Light').set('ON')
+				db.child("Car 1").child('Light').set('ON')
 				GPIO.output(RelayPin,GPIO.HIGH)
 			else:
-				db.child("Car 1 ").child('Light').set('OFF')
+				db.child("Car 1").child('Light').set('OFF')
 				GPIO.output(RelayPin,GPIO.LOW)
 			break
 		elif time[i]==':':
