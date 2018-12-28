@@ -22,11 +22,11 @@ while True:
 	time=str(datetime.datetime.now().time())
 	colonCount=0
 	if GPIO.input(InputPin):
-		db.child("Car 1").child("Light State").set("High Beam")
+		db.child("Car 1").child("Light State").set("LOW Beam")
 		print("LOW Beam")
 	else:
 		print("HIGH Beam")
-		db.child("Car 1").child("Light State").set("Low Beam")
+		db.child("Car 1").child("Light State").set("HIGH Beam")
 	for i in range(len(time)):
 		if colonCount>0:
 			real=(time[i:i+2])
