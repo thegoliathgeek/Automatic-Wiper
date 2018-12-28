@@ -33,10 +33,10 @@ while True:
 			print(real)
 			db.child("Car 1  ").child('Time').set(str(real))
 			if int(real) %2==0:
-				db.child("Car 1  ").child('Light').set('ON')
+				db.child("Car 1 ").child('Light').set('ON')
 				GPIO.output(RelayPin,GPIO.HIGH)
 			else:
-				db.child("Car 1  ").child('Light').set('OFF')
+				db.child("Car 1 ").child('Light').set('OFF')
 				GPIO.output(RelayPin,GPIO.LOW)
 			break
 		elif time[i]==':':
