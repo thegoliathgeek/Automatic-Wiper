@@ -14,3 +14,4 @@ Requirements :-
     
     - Pyrebase
     -RPi.GPIO
+    -Requests
